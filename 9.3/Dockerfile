@@ -17,7 +17,7 @@ ENV HOME=/var/lib/pgsql \
     PGUSER=postgres
 
 LABEL io.k8s.description="PostgreSQL is an advanced Object-Relational database management system" \
-      io.k8s.display-name="PostgreSQL 9.4" \
+      io.k8s.display-name="PostgreSQL 9.3" \
       io.openshift.expose-services="5432:postgresql" \
       io.openshift.tags="database,postgresql,postgresql95,rh-postgresql95"
 
@@ -26,7 +26,7 @@ EXPOSE 5432
 ADD root /
 
 
-ENV PG_REPO="https://download.postgresql.org/pub/repos/yum" PG_MAJOR="9.4" PG_MAJOR_NODOT="94" RHEL_VERSION="7.3" REPO_RHEL_ARCH="x86_64"
+ENV PG_REPO="https://download.postgresql.org/pub/repos/yum" PG_MAJOR="9.3" PG_MAJOR_NODOT="93" RHEL_VERSION="7.3" REPO_RHEL_ARCH="x86_64"
 
 ENV PG_REPOURL="${PG_REPO}/${PG_MAJOR}/redhat/rhel-${RHEL_VERSION}-${REPO_RHEL_ARCH}"
 
@@ -46,7 +46,7 @@ RUN yum install -y centos-release-scl-rh &&\
         test "$(id postgres)" = "uid=26(postgres) gid=26(postgres) groups=26(postgres)" && \
         mkdir -p /var/lib/pgsql/data && \
         /usr/libexec/fix-permissions /var/lib/pgsql && \
-        /usr/libexec/fix-permissions /var/run/postgresql &&\
+#        /usr/libexec/fix-permissions /var/run/postgresql &&\
         INSTALL_PKGS="rsync tar gettext bind-utils nss_wrapper" &&\
         yum -y --setopt=tsflags=nodocs install $INSTALL_PKGS && \
         rpm -V $INSTALL_PKGS && \
