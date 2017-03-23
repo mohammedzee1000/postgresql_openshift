@@ -19,7 +19,7 @@ ENV HOME=/var/lib/pgsql \
 LABEL io.k8s.description="PostgreSQL is an advanced Object-Relational database management system" \
       io.k8s.display-name="PostgreSQL 9.6" \
       io.openshift.expose-services="5432:postgresql" \
-      io.openshift.tags="database,postgresql,postgresql95,rh-postgresql95"
+      io.openshift.tags="database,postgresql,postgresql96"
 
 EXPOSE 5432
 
