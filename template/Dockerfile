@@ -70,4 +70,3 @@ VOLUME ["/var/lib/pgsql/data"]
 USER 26
 ENTRYPOINT ["container-entrypoint"]
 CMD ["run-postgresql"]
-
